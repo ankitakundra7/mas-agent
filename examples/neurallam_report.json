@@ -1,0 +1,86 @@
+{
+  "repo_url": "https://github.com/mllam/neural-lam",
+  "scan_date": "2026-05-01 03:25:56",
+  "duration_seconds": 145.9,
+  "verification": {
+    "v1_scanner": {
+      "ipynb_exist": true,
+      "py_excluded": true,
+      "scanner_would_select": [
+        "docs/notebooks/create_reduced_meps_dataset.ipynb"
+      ],
+      "selection_is_core_method": false
+    },
+    "v2_sample_data": {
+      "actual_data_files_in_repo": [],
+      "requires_external_download": true,
+      "data_included": false
+    },
+    "v3_demo": {
+      "demo_exists": false,
+      "demo_runs_core_method": false,
+      "demo_needs_external_data": true,
+      "demo_path": null
+    },
+    "v4_environment": {
+      "pip_install_likely_works": true,
+      "has_cuda_deps": true,
+      "blocking_issues": []
+    }
+  },
+  "completeness": {
+    "score": 1,
+    "content_score": 1,
+    "structural_score": 1,
+    "reasoning": "MISALIGNED NOTEBOOK pattern detected. The scanner will exclude all .py files because .ipynb exists, but the notebook (create_reduced_meps_dataset.ipynb) is purely data preprocessing and does NOT demonstrate the core neural weather prediction method. The core method is only in .py files that will be completely missed by the scanner.",
+    "core_files": [
+      "neural_lam/models/graph_lam.py",
+      "neural_lam/models/hi_lam.py",
+      "neural_lam/train_model.py"
+    ],
+    "scanner_would_find": false,
+    "scanner_would_select": [
+      "docs/notebooks/create_reduced_meps_dataset.ipynb"
+    ]
+  },
+  "clarity": {
+    "score": 2,
+    "reasoning": "Most functions have docstrings, uses argparse and YAML config system, but some hardcoded paths detected in multiple files",
+    "has_docstrings": true,
+    "has_hardcoded_paths": true,
+    "config_system": "argparse/yaml"
+  },
+  "modularity": {
+    "score": 2,
+    "reasoning": "Well-structured with base classes and inheritance hierarchy, models should be importable independently, but training is coupled with complex datastore system",
+    "model_importable_independently": true,
+    "custom_packages": [
+      "neural_lam"
+    ]
+  },
+  "reproducibility": {
+    "score": 2,
+    "reasoning": "Standard PyTorch ecosystem dependencies should install with some effort, all deps appear to be on PyPI, but GPU dependencies and torch-geometric version pinning may cause issues",
+    "env_install_likely_succeeds": true,
+    "blocking_issues": []
+  },
+  "executability": {
+    "score": 1,
+    "reasoning": "No demo of the core neural weather prediction method exists that can run without downloading large external datasets. The existing notebook is only data preprocessing, not a demonstration of the paper's contribution.",
+    "demo_exists": false,
+    "demo_runs_core_method": false,
+    "demo_path": null,
+    "cpu_capable": false
+  },
+  "total_score": 8,
+  "classification": "Minimum Viable",
+  "agent_ready": false,
+  "recommendations": [
+    "Create a notebook that imports and demonstrates the neural_lam models on included sample data",
+    "Include small sample weather datasets in the repository that can run without external downloads",
+    "Add a simple demo script that trains a model on synthetic or included data to showcase the core method",
+    "Remove hardcoded paths and make all paths configurable through the config system",
+    "Provide pre-trained model checkpoints for quick evaluation demos"
+  ],
+  "mas_cost_usd": 0.3636
+}

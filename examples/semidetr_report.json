@@ -1,0 +1,101 @@
+{
+  "repo_url": "https://github.com/JCZ404/Semi-DETR",
+  "scan_date": "2026-05-01 03:08:14",
+  "duration_seconds": 154.4,
+  "verification": {
+    "v1_scanner": {
+      "ipynb_exist": true,
+      "py_excluded": true,
+      "scanner_would_select": [
+        "thirdparty/mmdetection/demo/MMDet_Tutorial.ipynb",
+        "thirdparty/mmdetection/demo/inference_demo.ipynb"
+      ],
+      "selection_is_core_method": false
+    },
+    "v2_sample_data": {
+      "actual_data_files_in_repo": [],
+      "requires_external_download": true,
+      "data_included": false
+    },
+    "v3_demo": {
+      "demo_exists": true,
+      "demo_runs_core_method": true,
+      "demo_needs_external_data": true,
+      "demo_path": "demo/image_demo.py"
+    },
+    "v4_environment": {
+      "pip_install_likely_works": false,
+      "has_cuda_deps": true,
+      "blocking_issues": [
+        "Custom CUDA operators requiring compilation",
+        "Multi-GPU requirement (8 GPUs mentioned)",
+        "Unpinned dependencies",
+        "Complex thirdparty mmdetection dependency"
+      ]
+    }
+  },
+  "completeness": {
+    "score": 1,
+    "content_score": 1,
+    "structural_score": 1,
+    "reasoning": "Critical misaligned notebook pattern. The scanner will select generic mmdetection tutorials instead of Semi-DETR core method. The notebooks import standard mmdet but nothing from detr_od or detr_ssod packages. Core method completely missed.",
+    "core_files": [
+      "detr_od/models/dino_detr.py",
+      "detr_od/models/dense_heads/dino_detr_ssod_head.py",
+      "detr_ssod/apis/inference.py"
+    ],
+    "scanner_would_find": false,
+    "scanner_would_select": [
+      "thirdparty/mmdetection/demo/MMDet_Tutorial.ipynb",
+      "thirdparty/mmdetection/demo/inference_demo.ipynb"
+    ]
+  },
+  "clarity": {
+    "score": 2,
+    "reasoning": "Some documentation exists with decent docstrings in core classes, but hardcoded paths in configs and complex setup instructions limit clarity",
+    "has_docstrings": true,
+    "has_hardcoded_paths": true,
+    "config_system": "yaml"
+  },
+  "modularity": {
+    "score": 1,
+    "reasoning": "Tightly coupled with multiple interdependent custom packages (thirdparty/mmdetection, custom CUDA ops). Cannot import model independently without complex setup",
+    "model_importable_independently": false,
+    "custom_packages": [
+      "thirdparty/mmdetection",
+      "detr_od/models/utils/ops"
+    ]
+  },
+  "reproducibility": {
+    "score": 1,
+    "reasoning": "Installation fails due to custom CUDA compilation requirements, unpinned dependencies, multi-GPU requirements, and complex mmdetection dependency setup",
+    "env_install_likely_succeeds": false,
+    "blocking_issues": [
+      "Custom CUDA operators requiring compilation",
+      "Unpinned dependencies in requirements.txt",
+      "Multi-GPU setup required",
+      "Complex thirdparty mmdetection installation"
+    ]
+  },
+  "executability": {
+    "score": 1,
+    "reasoning": "Demo exists but requires external config files, checkpoint downloads, dataset setup, and multi-GPU infrastructure. Cannot run core method without significant manual setup",
+    "demo_exists": true,
+    "demo_runs_core_method": true,
+    "demo_path": "demo/image_demo.py",
+    "cpu_capable": false
+  },
+  "total_score": 6,
+  "classification": "Not Agent-Ready",
+  "agent_ready": false,
+  "recommendations": [
+    "Remove or relocate generic mmdetection notebooks to prevent scanner misalignment",
+    "Include sample data and pre-trained checkpoints in repository",
+    "Pin all dependencies with specific versions",
+    "Provide CPU-compatible execution path without CUDA requirements",
+    "Create self-contained demo that works without external downloads",
+    "Remove hardcoded paths from configuration files",
+    "Simplify installation by removing custom CUDA compilation requirements"
+  ],
+  "mas_cost_usd": 0.4681
+}

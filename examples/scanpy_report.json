@@ -1,0 +1,87 @@
+{
+  "repo_url": "https://github.com/scverse/scanpy",
+  "scan_date": "2026-05-01 03:17:53",
+  "duration_seconds": 410.2,
+  "verification": {
+    "v1_scanner": {
+      "ipynb_exist": true,
+      "py_excluded": true,
+      "scanner_would_select": [
+        "notebooks/pbmc3k.ipynb",
+        "notebooks/basic-scrna-tutorial.ipynb",
+        "docs/tutorials/basics/clustering.ipynb",
+        "and 30 other .ipynb files"
+      ],
+      "selection_is_core_method": true
+    },
+    "v2_sample_data": {
+      "actual_data_files_in_repo": [],
+      "requires_external_download": false,
+      "data_included": true
+    },
+    "v3_demo": {
+      "demo_exists": true,
+      "demo_runs_core_method": true,
+      "demo_needs_external_data": false,
+      "demo_path": "notebooks/pbmc3k.ipynb"
+    },
+    "v4_environment": {
+      "pip_install_likely_works": true,
+      "has_cuda_deps": false,
+      "blocking_issues": []
+    }
+  },
+  "completeness": {
+    "score": 3,
+    "content_score": 3,
+    "structural_score": 3,
+    "reasoning": "Core single-cell genomics methods extensively demonstrated in relevant notebooks that import and use scanpy functions. Built-in dataset functions provide readily available sample data. Clear README and pyproject.toml manifest.",
+    "core_files": [
+      "src/scanpy/preprocessing/",
+      "src/scanpy/tools/",
+      "src/scanpy/plotting/",
+      "notebooks/pbmc3k.ipynb",
+      "notebooks/basic-scrna-tutorial.ipynb"
+    ],
+    "scanner_would_find": true,
+    "scanner_would_select": [
+      "notebooks/pbmc3k.ipynb",
+      "notebooks/basic-scrna-tutorial.ipynb",
+      "and other tutorial notebooks"
+    ]
+  },
+  "clarity": {
+    "score": 3,
+    "reasoning": "Comprehensive docstrings with parameter types, detailed explanations, and literature references. No hardcoded paths. Well-documented configuration via function parameters.",
+    "has_docstrings": true,
+    "has_hardcoded_paths": false,
+    "config_system": "function parameters"
+  },
+  "modularity": {
+    "score": 3,
+    "reasoning": "Pure Python library with clean modular structure. Functions can be imported and used independently. No tight coupling or custom compilation requirements.",
+    "model_importable_independently": true,
+    "custom_packages": []
+  },
+  "reproducibility": {
+    "score": 3,
+    "reasoning": "All dependencies available on PyPI. Standard pyproject.toml packaging. No SSH dependencies or compilation requirements. Well-maintained scientific Python package.",
+    "env_install_likely_succeeds": true,
+    "blocking_issues": []
+  },
+  "executability": {
+    "score": 3,
+    "reasoning": "Multiple comprehensive demos exist that demonstrate the complete single-cell genomics workflow using scanpy's core methods. Built-in dataset functions provide readily available data. Runs on CPU in reasonable time.",
+    "demo_exists": true,
+    "demo_runs_core_method": true,
+    "demo_path": "notebooks/pbmc3k.ipynb",
+    "cpu_capable": true
+  },
+  "total_score": 15,
+  "classification": "Agent-Ready",
+  "agent_ready": true,
+  "recommendations": [
+    "The scanpy repository is excellent for agent conversion - it provides comprehensive single-cell genomics functionality with built-in datasets and extensive tutorial notebooks that demonstrate the complete workflow"
+  ],
+  "mas_cost_usd": 0.7236
+}

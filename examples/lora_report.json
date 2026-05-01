@@ -1,0 +1,105 @@
+{
+  "repo_url": "https://github.com/microsoft/LoRA",
+  "scan_date": "2026-05-01 03:11:01",
+  "duration_seconds": 165.8,
+  "verification": {
+    "v1_scanner": {
+      "ipynb_exist": true,
+      "py_excluded": true,
+      "scanner_would_select": [
+        "examples/NLU/notebooks/01-training-tokenizers.ipynb",
+        "examples/NLU/notebooks/02-transformers.ipynb",
+        "examples/NLU/notebooks/03-pipelines.ipynb",
+        "examples/NLU/notebooks/04-onnx-export.ipynb",
+        "examples/NLU/notebooks/05-benchmark.ipynb",
+        "examples/NLU/examples/research_projects/lxmert/demo.ipynb",
+        "examples/NLU/examples/research_projects/movement-pruning/Saving_PruneBERT.ipynb"
+      ],
+      "selection_is_core_method": false
+    },
+    "v2_sample_data": {
+      "actual_data_files_in_repo": [
+        "examples/NLU/examples/research_projects/rag/test_data/my_knowledge_dataset.csv",
+        "examples/NLU/tests/fixtures/tests_samples/MRPC/dev.tsv",
+        "examples/NLU/tests/fixtures/tests_samples/MRPC/train.tsv",
+        "examples/NLU/tests/fixtures/tests_samples/STS-B/dev.tsv",
+        "examples/NLU/tests/fixtures/tests_samples/STS-B/train.tsv"
+      ],
+      "requires_external_download": true,
+      "data_included": false
+    },
+    "v3_demo": {
+      "demo_exists": false,
+      "demo_runs_core_method": false,
+      "demo_needs_external_data": true,
+      "demo_path": null
+    },
+    "v4_environment": {
+      "pip_install_likely_works": true,
+      "has_cuda_deps": false,
+      "blocking_issues": [
+        "PyTorch dependency not specified in setup.py"
+      ]
+    }
+  },
+  "completeness": {
+    "score": 1,
+    "content_score": 3,
+    "structural_score": 1,
+    "reasoning": "MISALIGNED NOTEBOOKS pattern: The core LoRA method is well-implemented in loralib/*.py files, but scanner will exclude ALL .py files due to .ipynb presence and instead select irrelevant HuggingFace transformer tutorials that don't demonstrate LoRA at all.",
+    "core_files": [
+      "loralib/layers.py",
+      "loralib/utils.py",
+      "examples/NLG/src/model.py",
+      "examples/NLG/src/gpt2_ft.py"
+    ],
+    "scanner_would_find": false,
+    "scanner_would_select": [
+      "examples/NLU/notebooks/01-training-tokenizers.ipynb",
+      "examples/NLU/notebooks/02-transformers.ipynb",
+      "examples/NLU/notebooks/03-pipelines.ipynb"
+    ]
+  },
+  "clarity": {
+    "score": 2,
+    "reasoning": "LoRA library has good docstrings and clear API, but training examples require external data configuration and have some hardcoded assumptions.",
+    "has_docstrings": true,
+    "has_hardcoded_paths": true,
+    "config_system": "argparse"
+  },
+  "modularity": {
+    "score": 3,
+    "reasoning": "LoRA library (loralib) is cleanly packaged and importable independently. Well-structured with clear separation between layers, utils, and examples.",
+    "model_importable_independently": true,
+    "custom_packages": [
+      "loralib"
+    ]
+  },
+  "reproducibility": {
+    "score": 2,
+    "reasoning": "pip install loralib works but setup.py doesn't specify PyTorch dependency. No custom CUDA compilation needed.",
+    "env_install_likely_succeeds": true,
+    "blocking_issues": [
+      "PyTorch dependency not declared"
+    ]
+  },
+  "executability": {
+    "score": 1,
+    "reasoning": "No demo runs the core LoRA method without external data. Training scripts require --train_data and --valid_data arguments. Available notebooks demonstrate HuggingFace transformers, not LoRA.",
+    "demo_exists": false,
+    "demo_runs_core_method": false,
+    "demo_path": null,
+    "cpu_capable": true
+  },
+  "total_score": 9,
+  "classification": "Minimum Viable",
+  "agent_ready": false,
+  "recommendations": [
+    "CRITICAL: Add a simple demo notebook that imports loralib and demonstrates LoRA layer usage with synthetic data",
+    "Move LoRA demonstration notebooks to root level so scanner finds them instead of peripheral HuggingFace content",
+    "Add PyTorch dependency to setup.py",
+    "Create a minimal working example that doesn't require external dataset downloads",
+    "Add sample data files that demonstrate LoRA fine-tuning on a small included dataset"
+  ],
+  "mas_cost_usd": 0.5839
+}
