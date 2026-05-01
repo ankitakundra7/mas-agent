@@ -20,14 +20,21 @@ pip install -e .
 # Score a GitHub repository
 mas-score https://github.com/owner/repo
 
+Example: mas-score https://github.com/JCZ404/Semi-DETR
+
 # With paper abstract for better method identification
 mas-score https://github.com/owner/repo --abstract "We propose..."
+
+Example: mas-score https://github.com/JCZ404/Semi-DETR --abstract "We propose Semi-DETR, a semi-supervised object detection method using detection transformers with a one-to-many assignment strategy for pseudo-label mining"
 
 # Score a local repo (no cloning)
 mas-score /path/to/repo --local
 
+Example: as-score C:/Users/xyz/semidetr_agent/repo/Semi-DETR --local
+
+
 # Save reports
-mas-score https://github.com/owner/repo --output report --format both --verbose
+mas-score https://github.com/JCZ404/Semi-DETR --output semidetr_report --format both --verbose
 ```
 
 ## How It Works
@@ -50,4 +57,4 @@ Claude Code agent receives evidence + repo access. It reads README, Python files
 
 ## Relationship to Paper2Agent
 
-MAS is a **pre-screening layer**, not a replacement. Paper2Agent's scanner evaluates files ("is this tutorial good?"). MAS evaluates the system ("will the pipeline succeed?"). Running MAS first saves $5-20 per failed conversion.
+MAS is a **pre-screening layer**, not a replacement. Paper2Agent's scanner evaluates files ("is this tutorial good?"). MAS evaluates the system ("will the pipeline succeed?"). Running MAS first saves $10-$30+ per failed conversion.
