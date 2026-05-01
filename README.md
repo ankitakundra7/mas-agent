@@ -30,7 +30,7 @@ Example: mas-score https://github.com/JCZ404/Semi-DETR --abstract "We propose Se
 # Score a local repo (no cloning)
 mas-score /path/to/repo --local
 
-Example: as-score C:/Users/xyz/semidetr_agent/repo/Semi-DETR --local
+Example: mas-score C:/Users/xyz/semidetr_agent/repo/Semi-DETR --local
 
 
 # Save reports
