@@ -1,4 +1,4 @@
-# MAS Agent — Model Agent Specification Scorer
+# MAS Agent: Model Agent Specification Scorer
 
 Automated agent-readiness scoring for research paper repositories. Uses Claude Code CLI — the same infrastructure as Paper2Agent. No separate API key needed.
 
